@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Seguridad Social on FSS</title>
+    <link>http://localhost:1313/categories/seguridad-social/</link>
+    <description>Recent content in Seguridad Social on FSS</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 25 Feb 2026 09:54:28 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/seguridad-social/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Que busca en seguridad social</title>
+      <link>http://localhost:1313/blog/post1/</link>
+      <pubDate>Wed, 25 Feb 2026 09:54:28 -0500</pubDate>
+      <guid>http://localhost:1313/blog/post1/</guid>
+      <description>&lt;h1 id=&#34;titulo-1&#34;&gt;Titulo 1&lt;/h1&gt;&#xA;&lt;h2 id=&#34;titulo-2&#34;&gt;Titulo 2&lt;/h2&gt;&#xA;&lt;h3 id=&#34;titulo-3&#34;&gt;Titulo 3&lt;/h3&gt;&#xA;&lt;h4 id=&#34;titulo-4&#34;&gt;Titulo 4&lt;/h4&gt;&#xA;&lt;h5 id=&#34;titulo-5&#34;&gt;titulo 5&lt;/h5&gt;&#xA;&lt;h6 id=&#34;tiulo-6&#34;&gt;Tiulo 6&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;nosotros&lt;/li&gt;&#xA;&lt;li&gt;ustedes&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>
