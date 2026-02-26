@@ -1,4 +1,7 @@
-baseURL = "http://localhost:1313/"
+baseURL = "https://andresfcp1986.github.io/fss/"
+relativeURLs = false
+canonifyURLs = true
+publishDir = "public"
 languageCode = "es"
 title = "FSS"
 theme = "fss-theme"
