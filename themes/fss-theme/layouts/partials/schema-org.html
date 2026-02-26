@@ -1,0 +1,43 @@
+{{/* Esquema de organización global – se incluye en todas las páginas */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "{{ .Site.BaseURL }}#website",
+      "name": {{ .Site.Title | jsonify }},
+      "url": {{ .Site.BaseURL | jsonify }},
+      "description": {{ .Site.Params.description | jsonify }},
+      "publisher": { "@id": "{{ .Site.BaseURL }}#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "{{ .Site.BaseURL }}?s={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "{{ .Site.BaseURL }}#organization",
+      "name": {{ .Site.Title | jsonify }},
+      "url": {{ .Site.BaseURL | jsonify }},
+      "logo": { "@type": "ImageObject", "url": {{ .Site.Params.logo | jsonify }} },
+      "telephone": {{ .Site.Params.contact.phone | jsonify }},
+      "email": {{ .Site.Params.contact.email | jsonify }},
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bogotá",
+        "addressRegion": "Bogotá D.C.",
+        "addressCountry": "CO"
+      },
+      "areaServed": { "@type": "Country", "name": "Colombia" },
+      "foundingDate": "1995",
+      "priceRange": "$$",
+      "sameAs": ["https://wa.me/{{ .Site.Params.contact.whatsapp }}"]
+    }
+  ]
+}
+</script>

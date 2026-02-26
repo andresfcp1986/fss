@@ -1,0 +1,90 @@
+baseURL = "https://andresfcp1986.github.io/fss/"
+relativeURLs = true
+canonifyURLs = true
+languageCode  = "es-CO"
+title         = "Seguridad Social Fácil"
+theme         = "fss-theme"
+paginate      = 9
+
+[[menus.main]]
+  name   = "Blog"
+  url    = "/blog/"
+  weight = 4
+
+[[menus.main]]
+  name   = "Inicio"
+  url    = "/"
+  weight = 1
+
+
+
+[params]
+  description = "Tramitadores profesionales de afiliaciones a la seguridad social en Colombia desde 1995"
+  author      = "Seguridad Social Fácil"
+  tagline     = "Desde 1995"
+  logo        = "https://seguridadsocialfacil.com/wp-content/uploads/2025/09/cropped-gestion-empresarial-en-seguridad-social-FSS-1.avif"
+  logoAlt     = "Tramitadores de afiliaciones a seguridad social - FSS"
+  ogImage     = "https://seguridadsocialfacil.com/wp-content/uploads/2025/09/cropped-gestion-empresarial-en-seguridad-social-FSS-1.avif"
+
+  footerAbout     = "Desde 1995 ofreciendo servicios profesionales de tramitación de afiliaciones a seguridad social en Colombia. Más de 30 años de experiencia al servicio de su empresa."
+  footerCopyright = "&copy; 1995-2026 Seguridad Social Fácil &mdash; <strong>Tramitadores Profesionales de Afiliaciones a Seguridad Social</strong> en Colombia. Todos los derechos reservados. | <a href='/aviso-de-privacidad/'>Política de Privacidad</a> | <a href='/politica-de-tratamiento-de-datos-personales/'>Tratamiento de Datos</a> | <a href='/terminos-y-condiciones-del-servicio/'>Términos y Condiciones</a>"
+
+  [params.contact]
+    address  = "Bogotá – Colombia"
+    phone    = "+576016980709"
+    phoneLabel = "601 698 0709"
+    whatsapp = "573125197108"
+    email    = "info@seguridadsocialfacil.com"
+    hours    = "Lun - Vie: 8:00 AM – 6:00 PM"
+
+  [params.matomo]
+    enabled = true
+    url     = "//seguridadsocialfacil.com/public_html/matomo/"
+    siteId  = "2"
+
+  googleAnalytics = "G-ZPVFZLFVPB"
+
+[related]
+  threshold    = 80
+  includeNewer = true
+  [[related.indices]]
+    name   = "tags"
+    weight = 100
+  [[related.indices]]
+    name   = "categories"
+    weight = 80
+
+[[menus.footer]]
+  name   = "Nosotros"
+  url    = "/nosotros/"
+  weight = 1
+
+[[menus.footer]]
+  name   = "Servicios"
+  url    = "/servicios/"
+  weight = 2
+
+[[menus.footer]]
+  name   = "Blog"
+  url    = "/blog/"
+  weight = 3
+
+[[menus.footer]]
+  name   = "Contacto"
+  url    = "/contacto/"
+  weight = 4
+
+[[menus.footer]]
+  name   = "Política de Privacidad"
+  url    = "https://seguridadsocialfacil.com/aviso-de-privacidad/"
+  weight = 5
+
+[[menus.footer]]
+  name   = "Tratamiento de Datos"
+  url    = "https://seguridadsocialfacil.com/politica-de-tratamiento-de-datos-personales/"
+  weight = 6
+
+[[menus.footer]]
+  name   = "Términos y Condiciones"
+  url    = "https://seguridadsocialfacil.com/terminos-y-condiciones-del-servicio/"
+  weight = 7

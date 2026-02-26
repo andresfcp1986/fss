@@ -1,0 +1,66 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+
+      <div class="footer-section">
+        <h3>{{ .Site.Title }}</h3>
+        <p>{{ .Site.Params.footerAbout }}</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Servicios</h3>
+        <ul>
+          {{ with .Site.GetPage "/" }}
+            {{ range .Params.services }}
+           <li>
+             <a href="#{{ .title | urlize }}">
+               {{ .title }}
+             </a>
+           </li>
+          {{ end }}
+          {{ end }}
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Información</h3>
+        <ul>
+          {{- range .Site.Menus.footer }}
+          <li>
+            <a href="{{ .URL }}"
+               {{- if strings.HasPrefix .URL "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+              {{ .Name }}
+            </a>
+          </li>
+          {{- end }}
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contacto</h3>
+        <ul>
+          {{- with .Site.Params.contact.address }}
+          <li>📍 {{ . }}</li>
+          {{- end }}
+          {{- with .Site.Params.contact.phone }}
+          <li>📞 <a href="tel:{{ . }}">{{ $.Site.Params.contact.phoneLabel | default . }}</a></li>
+          {{- end }}
+          {{- with .Site.Params.contact.whatsapp }}
+          <li>💬 <a href="https://wa.me/{{ . }}" target="_blank" rel="noopener noreferrer">WhatsApp +57 312 519 7108</a></li>
+          {{- end }}
+          {{- with .Site.Params.contact.email }}
+          <li>✉️ <a href="mailto:{{ . }}">{{ . }}</a></li>
+          {{- end }}
+          {{- with .Site.Params.contact.hours }}
+          <li>🕐 {{ . }}</li>
+          {{- end }}
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>{{ .Site.Params.footerCopyright | safeHTML }}</p>
+    </div>
+  </div>
+</footer>

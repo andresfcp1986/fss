@@ -1,0 +1,30 @@
+{{/* 
+Shortcode: figure
+Parámetros:
+- src (obligatorio) → URL relativa de la imagen (ej: images/mi-imagen.avif)
+- alt (obligatorio) → texto alternativo
+- width (opcional)
+- height (opcional)
+- caption (opcional) → leyenda de la imagen
+- lazy (opcional, default true)
+*/}}
+
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" | default "" }}
+{{ $width := .Get "width" }}
+{{ $height := .Get "height" }}
+{{ $caption := .Get "caption" }}
+{{ $lazy := .Get "lazy" | default "true" }}
+
+<figure class="figure">
+  <img 
+    src="{{ $src }}"
+    alt="{{ $alt }}"
+    {{ if $width }} width="{{ $width }}"{{ end }}
+    {{ if $height }} height="{{ $height }}"{{ end }}
+    {{ if eq $lazy "true" }} loading="lazy"{{ end }}
+  >
+  {{ if $caption }}
+  <figcaption>{{ $caption }}</figcaption>
+  {{ end }}
+</figure>

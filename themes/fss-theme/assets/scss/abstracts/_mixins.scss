@@ -1,0 +1,47 @@
+// ================================================================
+//  _mixins.scss — Mixins de utilidad
+//  Variables disponibles globalmente via @import en main.scss
+// ================================================================
+
+// ── Media queries ─────────────────────────────────────────────
+@mixin mq-down($bp) {
+  @media (max-width: $bp) { @content; }
+}
+
+@mixin mq-up($bp) {
+  @media (min-width: $bp) { @content; }
+}
+
+// ── Elevación tipo card ───────────────────────────────────────
+@mixin card-base {
+  background: $color-white;
+  border-radius: $radius-md;
+  box-shadow: $shadow-md;
+  transition: $transition-base;
+}
+
+@mixin card-hover {
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+// ── Degradado de marca ────────────────────────────────────────
+@mixin gradient-brand($deg: 135deg) {
+  background: linear-gradient($deg, $color-primary 0%, $color-secondary 100%);
+}
+
+// ── Truncar texto con ellipsis ────────────────────────────────
+@mixin text-truncate($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

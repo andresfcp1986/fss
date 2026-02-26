@@ -1,0 +1,97 @@
+// ================================================================
+//  blog/_post.scss — Artículo individual de blog
+// ================================================================
+
+// ── Cabecera del artículo ─────────────────────────────────────
+.blog-post {
+  &__header {
+    background:    $color-bg-light;
+    padding:       60px 20px 40px;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__cats {
+    display:  flex;
+    gap:      0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size:     clamp(1.8rem, 4vw, 2.8rem);
+    font-weight:   700;
+    color:         $color-primary;
+    line-height:   1.2;
+    margin-bottom: 1rem;
+    text-align:    left;
+  }
+
+  &__meta {
+    display:     flex;
+    flex-wrap:   wrap;
+    gap:         1rem;
+    color:       $color-text-light;
+    font-size:   0.9rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+  }
+
+  &__lead {
+    font-size:   clamp(1.1rem, 2.5vw, 1.3rem);
+    color:       $color-text-light;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  &__cover {
+    width:         100%;
+    max-height:    480px;
+    object-fit:    cover;
+    border-radius: $radius-md;
+    margin-top:    1.5rem;
+  }
+
+  // ── Cuerpo ──────────────────────────────────────────────────
+  &__body {
+    padding: 50px 20px;
+  }
+
+  &__content {
+    max-width: 800px;
+    margin:    0 auto;
+  }
+
+  // ── Tags ────────────────────────────────────────────────────
+  &__tags {
+    max-width:  800px;
+    margin:     2rem auto 0;
+    display:    flex;
+    flex-wrap:  wrap;
+    gap:        0.5rem;
+    align-items: center;
+
+    strong { margin-right: 0.5rem; }
+  }
+}
+
+// ── CTA embebida en artículo ──────────────────────────────────
+.blog-cta {
+  max-width:     800px;
+  margin:        3rem auto 0;
+  background:    $color-bg-light;
+  padding:       2rem;
+  border-radius: $radius-md;
+  border-left:   4px solid $color-secondary;
+  text-align:    center;
+
+  h3 {
+    color:         $color-primary;
+    margin-bottom: 1rem;
+    text-align:    center;
+  }
+
+  p {
+    color:         $color-text-light;
+    margin-bottom: 1.5rem;
+  }
+}

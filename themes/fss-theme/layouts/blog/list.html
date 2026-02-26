@@ -1,0 +1,77 @@
+{{/* layouts/blog/list.html
+     Listado del blog: primer artículo como featured card,
+     resto en grid de 3 columnas, con paginación.
+*/}}
+
+{{ define "schema" }}
+  {{- partial "schema-org.html" . }}
+{{ end }}
+
+{{ define "main" }}
+
+{{/* ─── HERO ───────────────────────────────────────── */}}
+<section class="blog-hero page-hero" aria-label="Blog">
+  <div class="container">
+    <h1>{{ .Title | default "Blog" }}</h1>
+    {{- with .Description }}
+    <p class="section-intro">{{ . }}</p>
+    {{- else }}
+    <p class="section-intro">Artículos y recursos sobre seguridad social empresarial en Colombia.</p>
+    {{- end }}
+  </div>
+</section>
+
+<section class="blog-list-section">
+  <div class="container">
+
+    {{- if .Pages }}
+
+    {{/* ─── ARTÍCULO DESTACADO (primero) ────────────── */}}
+    {{- with (first 1 .Pages) }}
+    {{- range . }}
+    <article class="blog-featured">
+      {{- with .Params.image }}
+      <a href="{{ $.RelPermalink }}" class="blog-featured__image" tabindex="-1" aria-hidden="true">
+        <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="eager">
+      </a>
+      {{- end }}
+      <div class="blog-featured__body">
+        {{- with .Params.categories }}
+        <div class="blog-featured__cats">
+          {{- range . }}<a href="{{ "/categories/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>{{ end }}
+        </div>
+        {{- end }}
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        {{- with .Description }}<p>{{ . }}</p>{{- end }}
+        <div class="blog-post__meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">
+            📅 {{ .Date.Format "2 January 2006" }}
+          </time>
+          {{- if gt .ReadingTime 0 }}<span>🕐 {{ .ReadingTime }} min</span>{{- end }}
+        </div>
+        <a href="{{ .RelPermalink }}" class="btn btn-primary">Leer artículo</a>
+      </div>
+    </article>
+    {{- end }}
+    {{- end }}
+
+    {{/* ─── GRID RESTANTE ────────────────────────────── */}}
+    {{- with (after 1 .Pages) }}
+    <div class="blog-grid">
+      {{- range . }}
+      {{- partial "blog/card.html" . }}
+      {{- end }}
+    </div>
+    {{- end }}
+
+    {{/* ─── PAGINACIÓN ───────────────────────────────── */}}
+    {{- template "_internal/pagination.html" . }}
+
+    {{- else }}
+    <p class="list-empty">Todavía no hay artículos publicados. ¡Vuelve pronto!</p>
+    {{- end }}
+
+  </div>
+</section>
+
+{{ end }}

@@ -1,0 +1,62 @@
+{{/* layouts/_default/list.html
+     Listado genérico para cualquier sección (servicios, recursos, etc.)
+*/}}
+
+{{ define "schema" }}
+  {{- partial "schema-org.html" . }}
+{{ end }}
+
+{{ define "main" }}
+
+<section class="page-hero page-hero--list">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}
+    <p class="section-intro">{{ . }}</p>
+    {{- end }}
+  </div>
+</section>
+
+<section class="list-section">
+  <div class="container">
+
+    {{- with .Content }}
+    <div class="list-intro prose">{{ . }}</div>
+    {{- end }}
+
+    {{- if .Pages }}
+    <div class="list-grid">
+      {{- range .Pages }}
+      <article class="list-card">
+        {{- with .Params.image }}
+        <a href="{{ $.RelPermalink }}" class="list-card__image-wrap" tabindex="-1" aria-hidden="true">
+          <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy">
+        </a>
+        {{- end }}
+        <div class="list-card__body">
+          {{- with .Params.icon }}
+          <span class="list-card__icon" aria-hidden="true">{{ . }}</span>
+          {{- end }}
+          <h2 class="list-card__title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h2>
+          {{- with .Description }}
+          <p class="list-card__desc">{{ . }}</p>
+          {{- end }}
+          <a href="{{ .RelPermalink }}" class="btn btn-primary">Ver más</a>
+        </div>
+      </article>
+      {{- end }}
+    </div>
+
+    {{/* Paginación */}}
+    {{- template "_internal/pagination.html" . }}
+
+    {{- else }}
+    <p class="list-empty">No hay contenido disponible por el momento.</p>
+    {{- end }}
+
+  </div>
+</section>
+
+{{ end }}

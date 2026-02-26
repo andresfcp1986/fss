@@ -1,0 +1,9 @@
+{{/* layouts/shortcodes/toc.html */}}
+{{ if .Page.TableOfContents }}
+<div class="table-of-contents">
+  <button class="toc-toggle" aria-expanded="false">Tabla de Contenido ▼</button>
+  <div class="toc-content" data-open="false">
+    {{ .Page.TableOfContents | safeHTML }}
+  </div>
+</div>
+{{ end }}

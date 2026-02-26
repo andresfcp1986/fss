@@ -1,0 +1,8 @@
+name        = "FSS Theme"
+license     = "MIT"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "Tema Hugo para Seguridad Social Fácil – páginas de servicios + blog"
+homepage    = "https://seguridadsocialfacil.com/"
+tags        = ["servicios", "blog", "colombia", "seguridad-social"]
+features    = ["scss", "responsive", "seo", "schema-org"]
+min_version = "0.112.0"

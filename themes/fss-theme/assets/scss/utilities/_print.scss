@@ -1,0 +1,14 @@
+// ================================================================
+//  _print.scss — Estilos de impresión
+// ================================================================
+
+@media print {
+  .site-header  { position: relative; }
+  .menu-toggle,
+  .cta-buttons,
+  .blog-cta,
+  .site-footer  { display: none; }
+  section       { break-inside: avoid; }
+  a             { text-decoration: underline; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; }
+}

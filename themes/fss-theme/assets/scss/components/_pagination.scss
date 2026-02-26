@@ -1,0 +1,42 @@
+// ================================================================
+//  _pagination.scss
+// ================================================================
+
+.pagination {
+  display:         flex;
+  justify-content: center;
+  gap:             0.5rem;
+  margin-top:      3rem;
+  flex-wrap:       wrap;
+
+  a,
+  span {
+    display:       inline-flex;
+    align-items:   center;
+    justify-content: center;
+    min-width:     40px;
+    height:        40px;
+    padding:       0 0.75rem;
+    border-radius: $radius-sm;
+    font-weight:   600;
+    transition:    $transition-base;
+    border:        1px solid $color-border;
+  }
+
+  a {
+    color:      $color-primary;
+
+    &:hover {
+      background:    $color-secondary;
+      color:         $color-white;
+      border-color:  $color-secondary;
+    }
+  }
+
+  .active span,
+  span.active {
+    background:   $color-secondary;
+    color:        $color-white;
+    border-color: $color-secondary;
+  }
+}

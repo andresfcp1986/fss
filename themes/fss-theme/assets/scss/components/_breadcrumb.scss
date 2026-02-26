@@ -1,0 +1,24 @@
+// ================================================================
+//  _breadcrumb.scss
+// ================================================================
+
+.breadcrumb {
+  font-size:     0.9rem;
+  margin-bottom: 1.5rem;
+  color:         $color-text-light;
+  display:       flex;
+  flex-wrap:     wrap;
+  gap:           0.4rem;
+  align-items:   center;
+
+  a {
+    color:      $color-secondary;
+    transition: color 0.3s;
+
+    &:hover { color: $color-primary; }
+  }
+
+  span[aria-current="page"] {
+    color: $color-text-light;
+  }
+}

@@ -1,0 +1,249 @@
+// ================================================================
+//  components/_contact.scss — Sección de contacto 2 columnas
+// ================================================================
+
+.contact-section {
+  padding: 60px 20px;
+  background: $color-bg-light;
+
+  &__heading {
+    text-align:    center;
+    margin-bottom: 0.75rem;
+  }
+
+  &__intro {
+    text-align:    center;
+    color:         $color-text-light;
+    font-size:     clamp(1rem, 2.2vw, 1.15rem);
+    margin-bottom: 3rem;
+  }
+}
+
+// ── Grid 2 columnas ───────────────────────────────────────────
+.contact-grid {
+  display:               grid;
+  grid-template-columns: 1fr 1fr;
+  gap:                   2rem;
+  align-items:           start;
+
+  // Tablet y móvil: apilar en 1 columna centrada
+  @include mq-down($bp-lg) {
+    grid-template-columns: 1fr;
+    max-width: 680px;
+    margin:    0 auto;
+  }
+}
+
+// ── Card base (compartida por ambas columnas) ─────────────────
+.contact-card {
+  background:    $color-white;
+  border-radius: $radius-md;
+  box-shadow:    $shadow-md;
+  padding:       2rem 2rem 2.5rem;
+
+  h3 {
+    color:          $color-primary;
+    font-size:      clamp(1.2rem, 2.5vw, 1.5rem);
+    margin-bottom:  1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom:  2px solid $color-secondary;
+  }
+
+  // Variante: columna de información
+  &--info {
+    background: $color-primary;
+    color:      $color-white;
+
+    h3 {
+      color:        $color-white;
+      border-color: rgba($color-white, 0.3);
+    }
+  }
+
+  // Padding reducido en móvil
+  @include mq-down($bp-sm) {
+    padding: 1.5rem 1.25rem 2rem;
+  }
+}
+
+// ── Formulario ────────────────────────────────────────────────
+.contact-form {
+
+  // Honeypot invisible
+  &__honey {
+    position:   absolute;
+    left:       -9999px;
+    visibility: hidden;
+  }
+
+  &__group {
+    display:        flex;
+    flex-direction: column;
+    margin-bottom:  1.25rem;
+
+    label {
+      font-weight:   600;
+      font-size:     0.9rem;
+      color:         $color-primary;
+      margin-bottom: 0.4rem;
+
+      span { color: $color-secondary; }
+    }
+
+    input,
+    select,
+    textarea {
+      width:         100%;
+      padding:       0.7rem 1rem;
+      border:        1.5px solid $color-border;
+      border-radius: $radius-sm;
+      font-family:   $font-stack;
+      font-size:     1rem;
+      color:         $color-text;
+      background:    $color-white;
+      transition:    border-color 0.2s ease, box-shadow 0.2s ease;
+      appearance:    none;
+      // Evita desbordamiento en móvil
+      box-sizing:    border-box;
+      max-width:     100%;
+
+      &:focus {
+        outline:      none;
+        border-color: $color-secondary;
+        box-shadow:   0 0 0 3px rgba($color-secondary, 0.15);
+      }
+
+      &.is-invalid {
+        border-color: #e53e3e;
+        box-shadow:   0 0 0 3px rgba(229, 62, 62, 0.1);
+      }
+
+      &::placeholder { color: $color-contrast-3; }
+    }
+
+    textarea { resize: vertical; min-height: 130px; }
+
+    select {
+      background-image:    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23636363' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat:   no-repeat;
+      background-position: right 1rem center;
+      padding-right:       2.5rem;
+      cursor:              pointer;
+    }
+  }
+
+  // Fila de 2 campos lado a lado → colapsa antes en tablet
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    @include mq-down($bp-md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Mensaje de error inline
+  &__error {
+    color:      #e53e3e;
+    font-size:  0.82rem;
+    margin-top: 0.3rem;
+    min-height: 1.1em;
+  }
+
+  // Botón
+  &__btn {
+    width:      100%;
+    margin-top: 0.5rem;
+    position:   relative;
+  }
+
+  // Feedback del servidor
+  &__feedback {
+    margin-top:    1rem;
+    padding:       0.9rem 1.2rem;
+    border-radius: $radius-sm;
+    font-size:     0.95rem;
+    font-weight:   500;
+    display:       none;
+
+    &.is-success {
+      display:    block;
+      background: rgba($color-success, 0.12);
+      color:      darken(#00b2b2, 10%);
+      border:     1px solid rgba($color-success, 0.4);
+    }
+
+    &.is-error {
+      display:    block;
+      background: rgba(229, 62, 62, 0.08);
+      color:      #c53030;
+      border:     1px solid rgba(229, 62, 62, 0.3);
+    }
+  }
+}
+
+// ── Lista de datos de contacto (columna derecha) ──────────────
+.contact-info-list {
+  list-style: none;
+  margin:     0 0 2rem;
+  padding:    0;
+
+  li {
+    display:       flex;
+    align-items:   flex-start;
+    gap:           1rem;
+    padding:       1rem 0;
+    border-bottom: 1px solid rgba($color-white, 0.15);
+
+    &:last-child { border-bottom: none; }
+  }
+
+  &__icon {
+    font-size:   1.5rem;
+    flex-shrink: 0;
+    margin-top:  0.1rem;
+  }
+
+  div {
+    display:        flex;
+    flex-direction: column;
+    gap:            0.2rem;
+    // Evita que textos largos rompan el layout
+    min-width:      0;
+    word-break:     break-word;
+  }
+
+  strong {
+    font-size:      0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity:        0.7;
+    color:          $color-white;
+  }
+
+  span,
+  a {
+    font-size: 1rem;
+    color:     $color-white;
+  }
+
+  a {
+    text-decoration: none;
+    transition: opacity 0.2s;
+    &:hover { opacity: 0.8; }
+  }
+}
+
+// Botón WhatsApp dentro de la card info
+.contact-card__wa {
+  width:        100%;
+  text-align:   center;
+  background:   #25d366;
+  border-color: #25d366;
+
+  &:hover {
+    background:   darken(#25d366, 8%);
+    border-color: darken(#25d366, 8%);
+  }
+}

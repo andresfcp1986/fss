@@ -1,0 +1,72 @@
+// ================================================================
+//  _buttons.scss — Botones del tema
+// ================================================================
+
+.btn {
+  display:     inline-block;
+  padding:     15px 35px;
+  border-radius: $radius-pill;
+  font-weight: 600;
+  font-size:   clamp(0.95rem, 2vw, 1.1rem);
+  border:      2px solid transparent;
+  text-align:  center;
+  white-space: nowrap;
+  transition:  $transition-base;
+  cursor:      pointer;
+
+  // ── Primario ──────────────────────────────────────────────
+  &.btn-primary {
+    background:  $color-accent-2;
+    color:       $color-white;
+    box-shadow:  0 4px 15px rgba(0, 175, 229, 0.3);
+
+    &:hover {
+      background:  $color-accent-3;
+      transform:   translateY(-2px);
+      box-shadow:  0 6px 20px rgba(0, 175, 229, 0.4);
+    }
+  }
+
+  // ── Secundario ────────────────────────────────────────────
+  &.btn-secondary {
+    background:   $color-white;
+    color:        $color-primary;
+    border-color: $color-white;
+
+    &:hover {
+      background:   transparent;
+      color:        $color-white;
+      border-color: $color-white;
+    }
+  }
+
+  // ── CTA sobre fondo oscuro (blanco con texto de marca) ────
+  &.btn-cta-white {
+    background: $color-white;
+    color:      $color-primary;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+
+    &:hover {
+      background: rgba($color-white, 0.9);
+      transform:  translateY(-2px);
+    }
+  }
+}
+
+.cta-buttons {
+  display:         flex;
+  gap:             1rem;
+  justify-content: center;
+  flex-wrap:       wrap;
+  margin-top:      2rem;
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding:   12px 25px;
+    width:     100%;
+    max-width: 300px;
+  }
+
+  .cta-buttons { width: 100%; }
+}

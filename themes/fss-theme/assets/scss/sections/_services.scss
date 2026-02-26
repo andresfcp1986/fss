@@ -1,0 +1,64 @@
+// ================================================================
+//  _services.scss — Grid de tarjetas de servicios
+// ================================================================
+
+.services-grid {
+  display:               grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap:                   2rem;
+  margin-top:            3rem;
+}
+
+.service-card {
+  @include card-base;
+  @include card-hover;
+  padding: 2rem;
+  border:  1px solid $color-border;
+
+  .service-icon {
+    font-size:     clamp(2.5rem, 5vw, 3rem);
+    margin-bottom: 1.5rem;
+    display:       block;
+  }
+
+  h3 {
+    color:         $color-secondary;
+    margin-bottom: 1rem;
+    font-size:     clamp(1.2rem, 2.5vw, 1.5rem);
+    text-align:    left;
+  }
+
+  p {
+    line-height:   1.7;
+    margin-bottom: 1rem;
+    color:         $color-text-light;
+  }
+
+  ul {
+    margin-top: 1rem;
+
+    li {
+      padding:        0.5rem 0 0.5rem 1.5rem;
+      position:       relative;
+      line-height:    1.6;
+      font-size:      clamp(0.9rem, 2vw, 1rem);
+
+      &::before {
+        content:     "✓";
+        position:    absolute;
+        left:        0;
+        color:       $color-success;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+// ── Responsive ────────────────────────────────────────────────
+@include mq-down($bp-md) {
+  .services-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+@include mq-down($bp-sm) {
+  .service-card { padding: 1.5rem; }
+}

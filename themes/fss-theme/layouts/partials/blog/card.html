@@ -1,0 +1,25 @@
+{{/* partials/blog/card.html — Tarjeta de artículo de blog */}}
+<article class="blog-card">
+  {{- with .Params.image }}
+  <a href="{{ $.RelPermalink }}" class="blog-card__image" tabindex="-1" aria-hidden="true">
+    <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy">
+  </a>
+  {{- end }}
+  <div class="blog-card__body">
+    {{- with .Params.categories }}
+    <div class="blog-card__cats">
+      {{- range . }}<a href="{{ "/categories/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>{{ end }}
+    </div>
+    {{- end }}
+    <h3 class="blog-card__title">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h3>
+    {{- with .Description }}
+    <p class="blog-card__desc">{{ . | truncate 120 }}</p>
+    {{- end }}
+    <div class="blog-card__meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
+      {{- if gt .ReadingTime 0 }}<span>· {{ .ReadingTime }} min</span>{{- end }}
+    </div>
+  </div>
+</article>

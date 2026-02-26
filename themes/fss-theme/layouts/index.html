@@ -1,0 +1,207 @@
+{{/* layouts/index.html
+     Home page — misma lógica de secciones que _default/single.html
+     hero → servicios → beneficios → nosotros → proceso → faq → cta
+*/}}
+
+{{ define "schema" }}
+  {{- partial "schema-org.html" . }}
+{{ end }}
+
+{{ define "main" }}
+
+{{/* ═══════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ */}}
+<section class="hero" aria-label="Presentación">
+  <div class="container">
+    {{- with .Params.badge }}
+    <div class="experience-badge">{{ . | safeHTML }}</div>
+    {{- end }}
+    <h1>{{ .Title }}</h1>
+    {{- with .Params.subtitle }}
+    <p class="subtitle">{{ . }}</p>
+    {{- end }}
+    {{- with .Params.intro }}
+    <p>{{ . | safeHTML }}</p>
+    {{- end }}
+    {{- with .Params.ctaButtons }}
+    <div class="cta-buttons">
+      {{- range . }}
+      <a href="{{ .url }}"
+         class="btn {{ .class | default "btn-primary" }}"
+         {{- if strings.HasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+        {{ .label }}
+      </a>
+      {{- end }}
+    </div>
+    {{- end }}
+  </div>
+</section>
+
+{{/* ═══════════════════════════════════════════════
+     SERVICIOS
+════════════════════════════════════════════════ */}}
+{{- with .Params.services }}
+<section id="servicios" aria-labelledby="servicios-title">
+  <div class="container">
+    <h2 id="servicios-title">{{ $.Params.servicesTitle | default "Nuestros Servicios" }}</h2>
+    {{- with $.Params.servicesIntro }}
+    <p class="section-intro">{{ . | safeHTML }}</p>
+    {{- end }}
+    <div class="services-grid">
+      {{- range . }}
+      <article class="service-card">
+        <span class="service-icon" aria-hidden="true">{{ .icon }}</span>
+        <h3>{{ .title }}</h3>
+        <p>{{ .description }}</p>
+        {{- with .items }}
+        <ul>
+          {{- range . }}<li>{{ . }}</li>{{ end }}
+        </ul>
+        {{- end }}
+      </article>
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{- end }}
+
+{{/* ═══════════════════════════════════════════════
+     BENEFICIOS
+════════════════════════════════════════════════ */}}
+{{- with .Params.benefits }}
+<section id="beneficios" aria-labelledby="beneficios-title">
+  <div class="container">
+    <h2 id="beneficios-title">{{ $.Params.benefitsTitle | default "Beneficios" }}</h2>
+    {{- with $.Params.benefitsIntro }}
+    <p class="section-intro">{{ . }}</p>
+    {{- end }}
+    <div class="benefits-grid">
+      {{- range . }}
+      <article class="benefit-card">
+        <span class="benefit-icon" aria-hidden="true">{{ .icon }}</span>
+        <h3>{{ .title }}</h3>
+        <p>{{ .description }}</p>
+      </article>
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{- end }}
+
+{{/* ═══════════════════════════════════════════════
+     NOSOTROS
+════════════════════════════════════════════════ */}}
+{{- with .Params.about }}
+<section id="nosotros" aria-labelledby="nosotros-title">
+  <div class="container">
+    <h2 id="nosotros-title">{{ $.Params.aboutTitle | default "¿Por Qué Confiarnos?" }}</h2>
+    {{- with $.Params.aboutIntro }}
+    <p class="section-intro">{{ . }}</p>
+    {{- end }}
+    <div class="about-content">
+      <div class="about-text">
+        {{- range .paragraphs }}<p>{{ . | safeHTML }}</p>{{ end }}
+      </div>
+      {{- with .features }}
+      <div class="about-features">
+        {{- range . }}
+        <div class="feature-item">
+          <span class="feature-icon" aria-hidden="true">{{ .icon }}</span>
+          <div class="feature-text">
+            <h4>{{ .title }}</h4>
+            <p>{{ .description }}</p>
+          </div>
+        </div>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{- end }}
+
+{{/* ═══════════════════════════════════════════════
+     PROCESO
+════════════════════════════════════════════════ */}}
+{{- with .Params.process }}
+<section id="proceso" aria-labelledby="proceso-title">
+  <div class="container">
+    <h2 id="proceso-title">{{ $.Params.processTitle | default "¿Cómo Trabajamos?" }}</h2>
+    {{- with $.Params.processIntro }}
+    <p class="section-intro">{{ . }}</p>
+    {{- end }}
+    <div class="process-steps">
+      {{- range $i, $step := . }}
+      <div class="step">
+        <div class="step-number" aria-hidden="true">{{ add $i 1 }}</div>
+        <h3>{{ .title }}</h3>
+        <p>{{ .description }}</p>
+      </div>
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{- end }}
+
+{{/* ═══════════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════════ */}}
+{{- with .Params.faq }}
+<section id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <h2 id="faq-title">{{ $.Params.faqTitle | default "Preguntas Frecuentes" }}</h2>
+    {{- with $.Params.faqIntro }}
+    <p class="section-intro">{{ . }}</p>
+    {{- end }}
+    <div class="faq-container">
+      {{- range . }}
+      <div class="faq-item">
+        <div class="faq-question">{{ .question }}</div>
+        <div class="faq-answer"><p>{{ .answer }}</p></div>
+      </div>
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{- end }}
+
+{{/* ═══════════════════════════════════════════════
+     CTA / CONTACTO
+════════════════════════════════════════════════ */}}
+{{- with .Params.cta }}
+<section id="contacto" class="cta-section" aria-labelledby="cta-title">
+  <div class="cta-box">
+    <h2 id="cta-title">{{ .title }}</h2>
+    <p>{{ .description }}</p>
+    {{- with .contactItems }}
+    <div class="contact-info">
+      {{- range . }}
+      <div class="contact-item">
+        <div class="contact-icon" aria-hidden="true">{{ .icon }}</div>
+        <span>
+          {{- if .url }}
+          <a href="{{ .url }}"
+             {{- if strings.HasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+            {{ .label }}
+          </a>
+          {{- else }}{{ .label }}{{ end }}
+        </span>
+      </div>
+      {{- end }}
+    </div>
+    {{- end }}
+    {{- with .button }}
+    <div class="cta-section__action">
+      <a href="{{ .url }}"
+         class="btn btn-cta-white"
+         {{- if strings.HasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+        {{ .label }}
+      </a>
+    </div>
+    {{- end }}
+  </div>
+</section>
+{{- end }}
+
+{{ end }}

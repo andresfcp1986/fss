@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "es-CO" }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Meta Description -->
+  <meta name="description" content="{{ with .Params.meta_description }}{{ . }}{{ else }}{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+
+  <!-- Meta Keywords -->
+  {{ with .Params.meta_keywords }}
+  <meta name="keywords" content="{{ . }}">
+  {{ end }}
+
+  <!-- Author -->
+  <meta name="author" content="{{ .Site.Params.author | default .Site.Title }}">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="{{ with .Params.canonical }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ with .Params.og_title }}{{ . }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+  <meta property="og:description" content="{{ with .Params.og_description }}{{ . }}{{ else }}{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+  <meta property="og:type" content="{{ with .Params.og_type }}{{ . }}{{ else }}{{ if .IsPage }}article{{ else }}website{{ end }}{{ end }}">
+  <meta property="og:url" content="{{ with .Params.canonical }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}">
+  <meta property="og:image" content="{{ with .Params.og_image }}{{ . | absURL }}{{ else }}{{ .Site.Params.ogImage }}{{ end }}">
+  <meta property="og:locale" content="{{ .Site.LanguageCode | default "es_CO" }}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="{{ with .Params.twitter_card }}{{ . }}{{ else }}summary_large_image{{ end }}">
+  {{ with .Params.twitter_site }}
+  <meta name="twitter:site" content="{{ . }}">
+  {{ end }}
+  <meta name="twitter:title" content="{{ with .Params.og_title }}{{ . }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+  <meta name="twitter:description" content="{{ with .Params.og_description }}{{ . }}{{ else }}{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+  <meta name="twitter:image" content="{{ with .Params.og_image }}{{ . | absURL }}{{ else }}{{ .Site.Params.ogImage }}{{ end }}">
+
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+
+  <!-- CSS -->
+  {{- $scssOpts := dict "outputStyle" "compressed" }}
+  {{- $style := resources.Get "scss/main.scss" | toCSS $scssOpts | fingerprint }}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
+
+  <!-- JSON-LD dinámico -->
+{{ with .Params.schemas }}
+  {{ range . }}
+    <script type="application/ld+json">{{ . | safeJS }}</script>
+  {{ end }}
+  {{ end }}
+
+  <!-- JSON-LD fijo (LocalBusiness) -->
+  {{ block "schema" . }}{{ end }}
+
+  <!-- Matomo -->
+  {{- if .Site.Params.matomo.enabled }}
+  <script>
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="{{ .Site.Params.matomo.url }}";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '{{ .Site.Params.matomo.siteId }}']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  {{- end }}
+
+  <!-- Google Analytics -->
+  {{- with .Site.Params.googleAnalytics }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ . }}');
+  </script>
+  {{- end }}
+</head>
+<body>
+  {{- partial "header.html" . }}
+
+  <main id="main-content">
+    {{- block "main" . }}{{ end }}
+  </main>
+
+  {{- partial "footer.html" . }}
+
+  <!-- JS -->
+  {{- $js := resources.Get "js/main.js" | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
+
+  {{- block "scripts" . }}{{ end }}
+</body>
+</html>

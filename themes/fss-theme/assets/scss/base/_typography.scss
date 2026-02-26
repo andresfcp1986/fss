@@ -1,0 +1,52 @@
+// ================================================================
+//  _typography.scss — Estilos tipográficos globales
+// ================================================================
+
+body {
+  font-family: $font-stack;
+}
+
+h2 {
+  font-size:   clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color:       $color-primary;
+  text-align:  center;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size:   clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color:       $color-primary;
+  line-height: 1.3;
+}
+
+h4 {
+  font-size:   clamp(1.05rem, 2.3vw, 1.2rem);
+  font-weight: 600;
+  color:       $color-primary;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  line-height: $line-height-base;
+}
+
+.section-intro {
+  text-align:    center;
+  max-width:     800px;
+  margin:        0 auto 3rem;
+  font-size:     clamp(1rem, 2.2vw, 1.2rem);
+  color:         $color-text-light;
+  line-height:   1.7;
+}
+
+section {
+  padding: 60px 20px;
+
+  &:nth-child(even) {
+    background-color: $color-bg-light;
+  }
+}

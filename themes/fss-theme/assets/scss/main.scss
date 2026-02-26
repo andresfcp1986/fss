@@ -1,0 +1,50 @@
+// ================================================================
+//  main.scss — Punto de entrada único del tema FSS
+//  Compatible con Hugo Extended (LibSass) y Dart Sass
+//  Los @import deben ir en este orden: variables → mixins → resto
+// ================================================================
+
+// 1. Abstracts primero — quedan disponibles en todos los parciales
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+// 2. Base
+@import "base/reset";
+@import "base/typography";
+
+// 3. Layout
+@import "layout/container";
+@import "layout/header";
+@import "layout/footer";
+
+// 4. Componentes
+@import "components/buttons";
+@import "components/hero";
+@import "components/cards";
+@import "components/faq";
+@import "components/cta";
+@import "components/breadcrumb";
+@import "components/contact";
+@import "components/toc";
+@import "components/pagination";
+@import "components/tags";
+
+// 5. Secciones
+@import "sections/services";
+@import "sections/benefits";
+@import "sections/about";
+@import "sections/process";
+
+// 6. Blog
+@import "blog/list";
+@import "blog/post";
+@import "blog/card";
+
+// 7. Utilidades
+@import "utilities/prose";
+@import "utilities/responsive";
+@import "utilities/accessibility";
+@import "utilities/print";
+
+// 8. Imagenes
+@import "figure/figure";

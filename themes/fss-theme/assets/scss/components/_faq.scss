@@ -1,0 +1,51 @@
+// ================================================================
+//  _faq.scss — Sección de preguntas frecuentes
+// ================================================================
+
+.faq-container {
+  max-width: 900px;
+  margin:    3rem auto 0;
+}
+
+.faq-item {
+  background:     $color-white;
+  margin-bottom:  1.5rem;
+  border-radius:  $radius-sm;
+  box-shadow:     $shadow-sm;
+  overflow:       visible;
+  border-left:    4px solid $color-secondary;
+}
+
+.faq-question {
+  padding:     1.2rem 1.5rem;
+  font-weight: 600;
+  font-size:   clamp(1rem, 2.2vw, 1.1rem);
+  color:       $color-primary;
+  display:     flex;
+  align-items: flex-start;
+  gap:         1rem;
+
+  &::before {
+    content:     "Q:";
+    font-size:   clamp(1.2rem, 2.5vw, 1.4rem);
+    color:       $color-secondary;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+}
+
+.faq-answer {
+  padding:     0 1.5rem 1.5rem 3.5rem;
+  color:       $color-text-light;
+  line-height: 1.8;
+
+  p {
+    font-size: clamp(0.95rem, 2vw, 1rem);
+  }
+}
+
+// ── Responsive ────────────────────────────────────────────────
+@include mq-down($bp-sm) {
+  .faq-question { padding: 1rem; font-size: 1rem; }
+  .faq-answer   { padding: 0 1rem 1rem 2.5rem; }
+}

@@ -1,0 +1,51 @@
+// ================================================================
+//  _process.scss — Pasos del proceso de trabajo
+// ================================================================
+
+.process-steps {
+  display:               grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap:                   2rem;
+  margin-top:            3rem;
+}
+
+.step {
+  @include card-base;
+  padding:    2rem 1.5rem;
+  text-align: center;
+
+  h3 {
+    font-size:  clamp(1.1rem, 2.3vw, 1.3rem);
+    text-align: center;
+  }
+
+  p {
+    font-size:   clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.6;
+    color:       $color-text-light;
+  }
+}
+
+.step-number {
+  width:           60px;
+  height:          60px;
+  background:      linear-gradient(135deg, $color-secondary, $color-primary);
+  color:           $color-white;
+  border-radius:   50%;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-size:       clamp(1.5rem, 3vw, 1.8rem);
+  font-weight:     700;
+  margin:          0 auto 1.5rem;
+  box-shadow:      0 4px 15px rgba(24, 106, 178, 0.3);
+}
+
+// ── Responsive ────────────────────────────────────────────────
+@include mq-down($bp-md) {
+  .process-steps { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+@include mq-down($bp-sm) {
+  .step { padding: 1.5rem; }
+}
