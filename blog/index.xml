@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on FSS</title>
+    <link>http://localhost:1313/blog/</link>
+    <description>Recent content in Blogs on FSS</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 25 Feb 2026 09:54:28 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Articulo de Prueba</title>
+      <link>http://localhost:1313/blog/post2/</link>
+      <pubDate>Wed, 25 Feb 2026 09:54:28 -0500</pubDate>
+      <guid>http://localhost:1313/blog/post2/</guid>
+      <description>&lt;p&gt;Este es un artículo de prueba para verificar la &lt;strong&gt;tabla de contenidos&lt;/strong&gt; y el funcionamiento de los shortcodes de imagen en Hugo.&lt;/p&gt;&#xA;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet tincidunt lorem.&lt;/p&gt;&#xA;&lt;h2 id=&#34;objetivos&#34;&gt;Objetivos&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Probar TOC en desktop y móvil.&lt;/li&gt;&#xA;&lt;li&gt;Verificar que el toggle funcione correctamente.&lt;/li&gt;&#xA;&lt;li&gt;Comprobar la visualización de imágenes con shortcodes.&lt;/li&gt;&#xA;&lt;li&gt;Revisar estilos responsive.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;sección-1-markdown-básico&#34;&gt;Sección 1: Markdown Básico&lt;/h1&gt;&#xA;&lt;p&gt;El Markdown permite crear &lt;strong&gt;listas&lt;/strong&gt;, &lt;strong&gt;negritas&lt;/strong&gt;, &lt;em&gt;cursivas&lt;/em&gt; y enlaces fácilmente.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Post 3</title>
+      <link>http://localhost:1313/blog/pots3/</link>
+      <pubDate>Wed, 25 Feb 2026 09:54:28 -0500</pubDate>
+      <guid>http://localhost:1313/blog/pots3/</guid>
+      <description>&lt;p&gt;este es un post 3&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
